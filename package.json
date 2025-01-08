@@ -14,6 +14,7 @@
   "author": "saideep sriram",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2"
   }
 }
