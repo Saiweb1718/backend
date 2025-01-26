@@ -1,8 +1,8 @@
 
 import {mongoose,Schema} from "mongoose"
-import { jwt } from "jsonwebtoken"
+import jwt  from "jsonwebtoken"
 import bcrypt from "bcrypt"
-const userSchema = new Schema(
+const UserSchema = new Schema(
     {
     username : {
         type:String,
@@ -53,7 +53,7 @@ const userSchema = new Schema(
 userSchema.pre("save",async function (next) {
     const user = this;
     if (!user.isModified('password')) return next();
-    user.password = bcrypt.hash(user.password,10)
+    user.password = await bcrypt.hash(user.password,10)
     next()
 })
 
@@ -80,7 +80,7 @@ userSchema.methods.generateRefreshToken = function(){
         {
            _id:this._id,
         },
-        process.env.ACCESS_TOKEN_SECRET,
+        process.env.REFRESH_TOKEN_SECRET,
         {
             expiresIn:process.env.ACCESS_TOKEN_EXPIRY
         }
