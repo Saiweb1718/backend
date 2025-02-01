@@ -15,6 +15,7 @@ const asynchandler = (fn) => async (req,res,next) =>{
             success:false,
             message:err.message
         })
+        next(err)
     }
 }
 export {asynchandler}
