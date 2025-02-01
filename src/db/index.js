@@ -10,6 +10,7 @@ const connectDB = async()=>{
         console.log("connnection failed bro",error);
       process.exit(1);  
     }
+
 }
 
 export default connectDB
