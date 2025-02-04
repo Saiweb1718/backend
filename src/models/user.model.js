@@ -23,7 +23,6 @@ const userSchema = new Schema(
     fullname : {
         type:String,
         required:true,
-        unique:true,
         trim:true,
     },
     avatar:{
@@ -62,6 +61,8 @@ userSchema.methods.isPasswordCorrect = async function (password) {
     }
 
 userSchema.methods.generateAccessToken = function(){
+
+    
   return jwt.sign(
         {
            _id:this._id,
@@ -76,7 +77,9 @@ userSchema.methods.generateAccessToken = function(){
     )
 }
 userSchema.methods.generateRefreshToken = function(){
-    return jwt.sign(
+
+    
+     return jwt.sign(
         {
            _id:this._id,
         },
